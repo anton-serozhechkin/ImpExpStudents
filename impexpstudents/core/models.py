@@ -1,6 +1,6 @@
 from django.db import models
 from enum import Enum, unique
-from django.contrib.auth.models import AbstractUser, AbstractBaseUser
+from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 import random
@@ -40,7 +40,7 @@ class AcademicGroup(models.Model):
 class User(AbstractUser):
     first_name = models.CharField(max_length=30, default='')
     middle_name = models.CharField(max_length=30, default='')
-    last_name = models.CharField(max_length=30, default='', unique=True) 
+    last_name = models.CharField(max_length=30, default='') 
     password = models.CharField(max_length=50, default=create_pass())
     username = models.CharField(max_length=50, default=create_log(), unique=True)
     PRIORITIES = (
@@ -48,8 +48,8 @@ class User(AbstractUser):
         (1, 'Студент'),
     )
     user_type = models.PositiveSmallIntegerField(choices=PRIORITIES, default=1)
-    id_number = models.CharField('Номер студентського квитка', max_length=50, default='Невідомо')
-
+    id_number = models.CharField('Номер студентського квитка', max_length=50, unique=True, default='Невідомо')
+    USERNAME_FIELD = 'id_number'
 
 class Student(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True, verbose_name='Користувач')

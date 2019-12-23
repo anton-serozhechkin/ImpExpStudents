@@ -30,12 +30,12 @@ class AcademicGroupResourse(resources.ModelResource):
                   'year', 'id_number', )
 
 class StudentResourse(resources.ModelResource):
-    user = Field(attribute='user', column_name='Користувач', widget=ForeignKeyWidget(User, 'id_number'))
+    user = Field(attribute='user', column_name='Номер студентського квитка', widget=ForeignKeyWidget(User, 'id_number'))
     year = Field(attribute='year', column_name='Рік навчання')
-    academic_group = Field(attribute='academic_group', column_name='Академычна група', widget=ForeignKeyWidget(AcademicGroup, 'academic_group_code'))
+    academic_group = Field(attribute='academic_group', column_name='Академічна група', widget=ForeignKeyWidget(AcademicGroup, 'academic_group_code'))
 
     class Meta:
         model = Student
         import_id_fields = ('user', )
-        exclude = ('last_name','first_name',
-         'middle_name','id_number', )
+        exclude = ('first_name',
+         'middle_name','last_name', )
