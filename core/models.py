@@ -48,7 +48,7 @@ class User(AbstractUser):
         (1, 'Студент'),
     )
     user_type = models.PositiveSmallIntegerField(choices=PRIORITIES, default=1)
-    id_number = models.CharField('Номер студентського квитка', max_length=50, unique=True, default='Невідомо')
+    id_number = models.CharField('Номер студентського квитка', max_length=50, default='Невідомо')
     USERNAME_FIELD = 'username'
 
 class Student(models.Model):
