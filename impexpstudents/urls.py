@@ -44,5 +44,4 @@ admin.site.__class__ = AdminSiteOTPRequiredMixinRedirSetup
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(tf_urls, "two_factor")),
-
 ]

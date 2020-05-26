@@ -133,3 +133,7 @@ TWO_FACTOR_FORCE_OTP_ADMIN = True
 LOGIN_URL = 'two_factor:login'
 
 LOGIN_REDIRECT_URL = '/admin'
+
+AUTHENTICATION_BACKENDS = (
+    ('django.contrib.auth.backends.ModelBackend'),
+)
