@@ -1,4 +1,4 @@
-Django==2.2
+Django==2.2.13
 django-import-export==1.2.0
 awesome-slugify==1.6.5
 sqlparse==0.3.1
